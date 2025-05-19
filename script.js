@@ -59,10 +59,11 @@ function displayTransaction(filter = "all") {
 
   var tbody = document.getElementById("tbody");
   tbody.innerHTML = "";
+  // tbody.classList.add("border-seperate, border-spacing-y-2")
 
   filterTransaction.forEach((transaction) => {
     var tr = document.createElement("tr");
-    tr.setAttribute("class", "border-b border-gray-400 p-2 text-center mt-2 text-sm");
+    tr.setAttribute("class", "  p-2 text-center mt-4 text-md ");
 
     var dateTd = document.createElement("td");
     dateTd.innerHTML = transaction.date; 
@@ -70,6 +71,7 @@ function displayTransaction(filter = "all") {
     tr.appendChild(dateTd);
 
     var typeTd = document.createElement("td");
+   
     typeTd.innerHTML = transaction.type;
     
     tr.appendChild(typeTd);
@@ -90,7 +92,7 @@ function displayTransaction(filter = "all") {
     editButton.setAttribute("onclick", `editTransaction(${transaction.id})`);
 
     var editImg = document.createElement("img");
-    editImg.src = "/edit.png";
+    editImg.src = "/edit1.png";
     editImg.alt = "Edit";
     editButton.appendChild(editImg);
     editTd.appendChild(editButton);
