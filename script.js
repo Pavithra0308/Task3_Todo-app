@@ -59,31 +59,31 @@ function displayTransaction(filter = "all") {
 
   var tbody = document.getElementById("tbody");
   tbody.innerHTML = "";
+
   // tbody.classList.add("border-seperate, border-spacing-y-2")
 
   filterTransaction.forEach((transaction) => {
     var tr = document.createElement("tr");
-    tr.setAttribute("class", "  p-2 text-center mt-4 text-md ");
+    tr.setAttribute(
+      "class",
+      " text-white p-4 text-center text-md border-l-4 border-yellow-500 "
+    );
 
     var dateTd = document.createElement("td");
-    dateTd.innerHTML = transaction.date; 
-   
+    dateTd.innerHTML = transaction.date;
+    // dateTd.setAttribute("class","border-l-2 border-yellow-500")
     tr.appendChild(dateTd);
 
     var typeTd = document.createElement("td");
-   
     typeTd.innerHTML = transaction.type;
-    
     tr.appendChild(typeTd);
 
     var descTd = document.createElement("td");
     descTd.innerHTML = transaction.description;
-
     tr.appendChild(descTd);
 
     var amountTd = document.createElement("td");
     amountTd.innerHTML = `₹${transaction.amount.toFixed(2)}`;
-
     tr.appendChild(amountTd);
 
     var editTd = document.createElement("td");
@@ -92,7 +92,7 @@ function displayTransaction(filter = "all") {
     editButton.setAttribute("onclick", `editTransaction(${transaction.id})`);
 
     var editImg = document.createElement("img");
-    editImg.src = "/edit1.png";
+    editImg.src = "/edit.png";
     editImg.alt = "Edit";
     editButton.appendChild(editImg);
     editTd.appendChild(editButton);
@@ -111,6 +111,9 @@ function displayTransaction(filter = "all") {
     tr.appendChild(delTd);
 
     tbody.appendChild(tr);
+    var emptyRow = document.createElement("tr");
+    emptyRow.innerHTML = "<td colspan='4' style='height: 10px;'></td>"; // Adjust height as needed
+    tbody.appendChild(emptyRow);
   });
   updateTotal();
 }
